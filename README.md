@@ -22,7 +22,6 @@ The NYC Mortality API is a web service designed to analyze and provide insights 
 - **Backend**: Python, Flask
 - **Database**: PostgreSQL
 - **Frontend**: React
-- **Environment Management**: dotenv for managing environment variables
 - **Database Driver**: psycopg2 for PostgreSQL interaction
 
 ## Setup
@@ -44,5 +43,7 @@ The NYC Mortality API is a web service designed to analyze and provide insights 
 
 ## Contributors
    Ruby Ssk
+   
    Ezeddin Fadel
+   
    Jonathan Amsalem
