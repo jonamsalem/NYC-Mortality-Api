@@ -9,9 +9,8 @@ def execute_query(query):
         cursor.execute(query)
         if cursor.description:  # Check if the query returns results
             return cursor.fetchall(), None
-        else:
-            conn.commit()  # Commit if it's an INSERT/UPDATE/DELETE query
-            return None, None  # Return None for non-SELECT queries
+        conn.commit()  # Commit if it's an INSERT/UPDATE/DELETE query
+        return None, None  # Return None for non-SELECT queries
     except Exception as e:
         print(f"Error executing query: {e}")
         return None, e
