@@ -11,14 +11,18 @@ def execute_query(query):
         cursor.execute(query)
         if cursor.description:  # Check if the query returns results
             return cursor.fetchall(), None
-        else:
-            conn.commit()  # Commit if it's an INSERT/UPDATE/DELETE query
-            return None, None  # Return None for non-SELECT queries
+
+        conn.commit()  # Commit if it's an INSERT/UPDATE/DELETE query
+        return None, None  # Return None for non-SELECT queries
     except (psycopg2.DatabaseError, psycopg2.OperationalError) as e:
         print(f"Database error: {e}")
         return None, e
     except Exception as e:  # Only catch general exceptions as a last resort
         print(f"Unexpected error: {e}")
+        conn.commit()  # Commit if it's an INSERT/UPDATE/DELETE query
+        return None, None  # Return None for non-SELECT queries
+    except Exception as e:
+        print(f"Error executing query: {e}")
         return None, e
     finally:
         cursor.close()  # Always close the cursor
