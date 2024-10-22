@@ -16,7 +16,7 @@ init_db_pool(
 
 
 #This route will return the version of the database. Just an example to show how to use the connection pool.
- ##! Write your queries and then just copy and paste the rest
+ ##! Write your queries and then just copy and paste the rest with its corresponding path and function name
 @app.route('/db_version', methods=['GET']) # path of the request
 def db_version():
     query = "SELECT version();"
@@ -26,6 +26,17 @@ def db_version():
         return {"error": str(error)}, 500
 
     return jsonify(results), 200
+
+@app.route('/count', methods=['GET']) # path of the request
+def count():
+    query = "SELECT COUNT(*) FROM mortality;"
+    results, error = execute_query(query)
+    
+    if error:
+        return {"error": str(error)}, 500
+
+    return jsonify(results), 200
+
 
 
 

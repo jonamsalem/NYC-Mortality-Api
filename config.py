@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(".env")
 
 #parse the .env file and return it using the get method
 class Config:
