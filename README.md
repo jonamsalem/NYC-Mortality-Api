@@ -40,6 +40,11 @@ The NYC Mortality API is a web service designed to analyze and provide insights 
 
    Create a `.env` file in the root directory and populate with secrets. DO NOT store secrets in `example.env`.
 
+2.  DO NOT write code in main
+
+  code in a different branch that is not main
+   example ```git checkout -b"update-readme"```  on terminal
+
 
 ## Contributors
    Ruby Ssk
