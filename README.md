@@ -48,6 +48,7 @@ The NYC Mortality API is a web service designed to analyze and provide insights 
 3. Always pull main before creating new code
 example ``` git pull origin main ``` on terminal
 
+
 ## Contributors
    Ruby Ssk
    
