@@ -45,6 +45,8 @@ The NYC Mortality API is a web service designed to analyze and provide insights 
   code in a different branch that is not main
    example ```git checkout -b"update-readme"```  on terminal
 
+3. Always pull main before creating new code
+example ``` git pull origin main ``` on terminal
 
 ## Contributors
    Ruby Ssk
