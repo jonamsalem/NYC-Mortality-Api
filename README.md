@@ -40,7 +40,11 @@ The NYC Mortality API is a web service designed to analyze and provide insights 
 
    Create a `.env` file in the root directory and populate with secrets. DO NOT store secrets in `example.env`.
 
+2. Run server
 
+   ```bash 
+   python3 app.py
+   ```
 ## Contributors
    Ruby Ssk
    
