@@ -45,6 +45,24 @@ The NYC Mortality API is a web service designed to analyze and provide insights 
    ```bash 
    python3 app.py
    ```
+
+3. Before writing code:
+     ```bash 
+   git pull origin main
+   ```
+
+4. When done writing code:
+      ```bash 
+   git add . 
+   ```
+      ```bash 
+   git commit -m "message"
+   ```
+
+      ```bash 
+   git push origin main
+   ```
+
 ## Contributors
    Ruby Ssk
    
