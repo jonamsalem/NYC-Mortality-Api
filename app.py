@@ -47,7 +47,19 @@ def all_rows():
 
     return jsonify(results), 200
 
+@app.route('/cause', methods=['GET']) # path of the request
+def cause():
+    query = """
+    SELECT Leading_Cause, COUNT(*) 
+    FROM mortality
+    GROUP BY Leading_Cause;
+    """
+    results, error = execute_query(query)
+    
+    if error:
+        return {"error": str(error)}, 500
 
+    return jsonify(results), 200
 
 
 if __name__ == '__main__':
