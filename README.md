@@ -48,6 +48,28 @@ The NYC Mortality API is a web service designed to analyze and provide insights 
 3. Always pull main before creating new code
 example ``` git pull origin main ``` on terminal
 
+4. Run server
+
+   ```bash 
+   python3 app.py
+   ```
+
+5. Before writing code:
+     ```bash 
+   git pull origin main
+   ```
+
+6. When done writing code:
+      ```bash 
+   git add . 
+   ```
+      ```bash 
+   git commit -m "message"
+   ```
+
+      ```bash 
+   git push origin main
+   ```
 
 ## Contributors
    Ruby Ssk

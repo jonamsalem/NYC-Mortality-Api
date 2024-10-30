@@ -37,6 +37,16 @@ def count():
 
     return jsonify(results), 200
 
+@app.route('/all-rows', methods=['GET']) # path of the request
+def all_rows():
+    query = "SELECT * FROM mortality;"
+    results, error = execute_query(query)
+    
+    if error:
+        return {"error": str(error)}, 500
+
+    return jsonify(results), 200
+
 
 
 
