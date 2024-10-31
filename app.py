@@ -50,9 +50,9 @@ def all_rows():
 @app.route('/cause', methods=['GET']) # path of the request
 def cause():
     query = """
-    SELECT Leading_Cause, COUNT(*) 
+    SELECT leading_cause, COUNT(*) 
     FROM mortality
-    GROUP BY Leading_Cause;
+    GROUP BY leading_cause;
     """
     results, error = execute_query(query)
     
@@ -61,6 +61,35 @@ def cause():
 
     return jsonify(results), 200
 
+@app.route('/cause-year', methods=['GET'])  # path of the request
+def cause_year():
+    query = """
+    SELECT Year, leading_cause, COUNT(*) AS death_count
+    FROM mortality
+    GROUP BY Year, leading_cause;
+    """
+    results, error = execute_query(query)
+    
+    if error:
+        return {"error": str(error)}, 500
+
+    return jsonify(results), 200
+
+
+@app.route('/cause-common', methods=['GET']) # path of the request
+def cause_common():
+    query = """
+    SELECT leading_cause, COUNT(*) AS death_count 
+    FROM mortality
+    GROUP BY leading_cause
+    ORDER BY death_count DESC;
+    """
+    results, error = execute_query(query)
+    
+    if error:
+        return {"error": str(error)}, 500
+
+    return jsonify(results), 200
 
 if __name__ == '__main__':
     app.run(host=Config.get('HOST'), port=Config.get('PORT'), debug=True) #the base path is "localhost:5000"
