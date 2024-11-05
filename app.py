@@ -29,7 +29,7 @@ def db_version():
 
 @app.route('/count', methods=['GET']) # path of the request
 def count():
-    query = "SELECT COUNT(*) FROM mortality;"
+    query = "SELECT COUNT(*) FROM nyc_mortality;"
     results, error = execute_query(query)
     
     if error:
@@ -39,7 +39,7 @@ def count():
 
 @app.route('/all-rows', methods=['GET']) # path of the request
 def all_rows():
-    query = "SELECT * FROM mortality;"
+    query = "SELECT * FROM nyc_mortality;"
     results, error = execute_query(query)
     
     if error:
@@ -51,7 +51,7 @@ def all_rows():
 def cause():
     query = """
     SELECT leading_cause, COUNT(*) 
-    FROM mortality
+    FROM nyc_mortality
     GROUP BY leading_cause;
     """
     results, error = execute_query(query)
@@ -65,7 +65,7 @@ def cause():
 def cause_year():
     query = """
     SELECT Year, leading_cause, COUNT(*) AS death_count
-    FROM mortality
+    FROM nyc_mortality
     GROUP BY Year, leading_cause;
     """
     results, error = execute_query(query)
@@ -80,7 +80,7 @@ def cause_year():
 def cause_common():
     query = """
     SELECT leading_cause, COUNT(*) AS death_count 
-    FROM mortality
+    FROM nyc_mortality
     GROUP BY leading_cause
     ORDER BY death_count DESC;
     """
