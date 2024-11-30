@@ -1,2 +1,3 @@
 .env
 __pycache__
+random_search_model.pkl

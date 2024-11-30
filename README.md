@@ -48,18 +48,22 @@ The NYC Mortality API is a web service designed to analyze and provide insights 
 3. Always pull main before creating new code
 example ``` git pull origin main ``` on terminal
 
-4. Run server
+4. Unzip the random_search_model.pkl.zip file
+
+
+5. Run server
 
    ```bash 
    python3 app.py
    ```
 
-5. Before writing code:
+6. Before writing code:
      ```bash 
    git pull origin main
    ```
 
-6. When done writing code:
+ 
+7. When done writing code:
       ```bash 
    git add . 
    ```
@@ -71,9 +75,29 @@ example ``` git pull origin main ``` on terminal
    git push origin main
    ```
 
+
+## To run the prediction endpoint follow this format: 
+
+```bash
+curl -X POST http://localhost:5000/predict -H "Content-Type: application/json" -d '{
+  "Sex": ["Male"],
+  "Race Ethnicity": ["Hispanic"],
+  "Death Rate": [15.4],
+  "Age Adjusted Death Rate": [22.8]
+}'
+{
+  "predicted_leading_cause": "Meningitis (G00, G03)"
+}
+
+
+
+```
 ## Contributors
    Ruby Ssk
    
    Ezeddin Fadel
    
    Jonathan Amsalem
+
+
+3. Unzip the random_search_model.pkl.zip file
