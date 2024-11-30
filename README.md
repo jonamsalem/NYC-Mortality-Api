@@ -99,5 +99,3 @@ curl -X POST http://localhost:5000/predict -H "Content-Type: application/json" -
    
    Jonathan Amsalem
 
-
-3. Unzip the random_search_model.pkl.zip file
