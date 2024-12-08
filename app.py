@@ -108,15 +108,17 @@ def death(): #highest number of deaths in a year
     
     if error:
         return {"error": str(error)}, 500
+    return jsonify(results), 200
     
 @app.route('/death-eth', methods=['GET']) # path of the request
 def death_eth(): #ethnicity with most deaths
     query = """
-    SSELECT "Race Ethnicity", SUM(Deaths) AS Total_Deaths
+    SELECT race_ethnicity, SUM(deaths) AS Total_Deaths
     FROM nyc_mortality
-    GROUP BY "Race Ethnicity"
+    GROUP BY race_ethnicity
     ORDER BY Total_Deaths DESC
-    LIMIT 1;   
+    LIMIT 1;
+
     """
     results, error = execute_query(query)
     
@@ -128,12 +130,12 @@ def death_eth(): #ethnicity with most deaths
 @app.route('/high-death', methods=['GET']) # path of the request
 def high_death(): #leading cause of death with most deaths
     query = """
-    SELECT "Leading Cause", SUM(Deaths) AS Total_Deaths
-    FROM ynyc_mortality
-    GROUP BY "Leading Cause"
+    SELECT leading_cause, SUM(COALESCE(Deaths, 0)) AS Total_Deaths
+    FROM nyc_mortality
+    GROUP BY leading_cause
     ORDER BY Total_Deaths DESC
-    LIMIT 1;   
-    """
+    LIMIT 1;  
+        """
     results, error = execute_query(query)
     
     if error:
@@ -144,7 +146,7 @@ def high_death(): #leading cause of death with most deaths
 @app.route('/avg-death', methods=['GET']) # path of the request
 def avg_death(): #average death rate for each year
     query = """
-    SELECT Year, AVG("Death Rate") AS Average_Death_Rate
+    SELECT Year, AVG(death_rate) AS Average_Death_Rate
     FROM nyc_mortality
     GROUP BY Year
     ORDER BY Year; 
