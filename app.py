@@ -142,7 +142,7 @@ def high_death(): #leading cause of death with most deaths
     return jsonify(results), 200
 
 @app.route('/avg-death', methods=['GET']) # path of the request
-def avg_death(): #leading cause of death with most deaths
+def avg_death(): #average death rate for each year
     query = """
     SELECT Year, AVG("Death Rate") AS Average_Death_Rate
     FROM nyc_mortality
